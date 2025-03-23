@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace Feb25TurnUpPortal.Utilities
+namespace ReqnrollProject1.Utilities
 {
     public class CommonDriver
     {

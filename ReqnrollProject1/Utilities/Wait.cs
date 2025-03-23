@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace Feb25TurnUpPortal.Utilities
+namespace ReqnrollProject1.Utilities
 {
     public class Wait
 

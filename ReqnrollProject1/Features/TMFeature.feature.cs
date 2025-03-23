@@ -20,16 +20,16 @@ namespace ReqnrollProject1.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Feature1")]
+    [NUnit.Framework.DescriptionAttribute("TMFeature")]
     [NUnit.Framework.FixtureLifeCycleAttribute(NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    public partial class Feature1Feature
+    public partial class TMFeatureFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Feature1", "As a TurnUp Portsl admin user \r\nI would like to create,edit and delete Time and M" +
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "TMFeature", "As a TurnUp Portsl admin user \r\nI would like to create,edit and delete Time and M" +
                 "aterial records\r\nso that I can manage the employee time and material successfull" +
                 "y", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
@@ -118,6 +118,43 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 12
  await testRunner.ThenAsync("the record should be created successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit existing time record with valid data")]
+        [NUnit.Framework.TestCaseAttribute("Industry Connect", null)]
+        [NUnit.Framework.TestCaseAttribute("TA Job Ready", null)]
+        [NUnit.Framework.TestCaseAttribute("Divya", null)]
+        public async System.Threading.Tasks.Task EditExistingTimeRecordWithValidData(string code, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("code", code);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Edit existing time record with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 14
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 15
+    await testRunner.GivenAsync("I logged into Turnup portal successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 16
+ await testRunner.AndAsync("I navigate to the Time and Material Page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 17
+ await testRunner.WhenAsync(string.Format("I update the \'{0}\' on the existing time record.", code), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 18
+ await testRunner.ThenAsync(string.Format("the record should be updated \'{0}\'", code), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

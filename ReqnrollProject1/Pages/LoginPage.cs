@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace Feb25TurnUpPortal.Pages
+namespace ReqnrollProject1.Pages
 {
     public class LoginPage
 

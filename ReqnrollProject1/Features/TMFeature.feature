@@ -1,4 +1,4 @@
-﻿Feature: Feature1
+﻿Feature: TMFeature
 
 As a TurnUp Portsl admin user 
 I would like to create,edit and delete Time and Material records
@@ -10,3 +10,15 @@ Scenario: Create new time and material record with valid data
 	And I navigate to the Time and Material Page
 	When I create a new Time and Material record
 	Then the record should be created successfully
+
+Scenario Outline: Edit existing time record with valid data
+    Given  I logged into Turnup portal successfully
+	And I navigate to the Time and Material Page
+	When I update the '<code>' on the existing time record.
+	Then  the record should be updated '<code>'
+
+Examples: 
+| code |
+| Industry Connect  |
+| TA Job Ready |
+| Divya |

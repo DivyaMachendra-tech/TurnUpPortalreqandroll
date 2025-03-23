@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Feb25TurnUpPortal.Utilities;
+using ReqnrollProject1.Utilities;
 using OpenQA.Selenium;
 
-namespace Feb25TurnUpPortal.Pages
+namespace ReqnrollProject1.Pages
 {
     public class HomePage
     {

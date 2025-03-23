@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Feb25TurnUpPortal.Utilities;
+using ReqnrollProject1.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace Feb25TurnUpPortal.Pages
+
+namespace ReqnrollProject1.Pages
 {
     public class TMPage
     {
@@ -37,37 +39,38 @@ namespace Feb25TurnUpPortal.Pages
             priceTagOverlap.Click();
 
             IWebElement priceTextBox = driver.FindElement(By.Id("Price"));
-            priceTextBox.SendKeys("12");
+            priceTextBox.SendKeys("14 ");
 
             //Click on save button
             IWebElement saveButton = driver.FindElement(By.Id("SaveButton"));
             saveButton.Click();
-            Wait.WaitToBeVisible(driver, "XPath", "//span[text()='Go to the last page']", 3);
+            Wait.WaitToBeVisible(driver, "XPath", "//span[text()='Go to the last page']", 20);
 
             //check time record has been created successfully
             IWebElement goToLastPageButton = driver.FindElement(By.XPath("//span[text()='Go to the last page']"));
             goToLastPageButton.Click();
 
-            Wait.WaitToBeVisible(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 3);
-
-            IWebElement newCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-
-            Assert.That(newCode.Text == "TA Programme", "New time record has not been created");
-
-            //if (newCode.Text == "TA Programme")
-            //{
-            //    Assert.Pass("Time record created successfully!");
-            //}
-            //else
-            //{
-            //    Assert.Fail("New time recorded has not been created!");
-
-            //}
-
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]", 3);
+           //Wait.WaitToBeVisible(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 10);
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]", 50);
 
         }
-        public void EditTimeRecord(IWebDriver driver)
+
+        public String GetNewCode(IWebDriver driver)
+        {
+            IWebElement newCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            return newCode.Text;
+        }
+        public String GetNewDescription(IWebDriver driver)
+        {
+            IWebElement newDescription = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
+            return newDescription.Text;
+        }
+        public String GetNewPrice(IWebDriver driver)
+        {
+            IWebElement newPrice = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[4]"));
+            return newPrice.Text;
+        }
+        public void EditTimeRecord(IWebDriver driver,String code)
         {
             //Go to last page
             IWebElement goToLastPageButton = driver.FindElement(By.XPath("//span[text()='Go to the last page']"));
@@ -79,24 +82,37 @@ namespace Feb25TurnUpPortal.Pages
             editButton.Click();
 
             //Edit the price per unit
-            IWebElement priceTagOverlap1 = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[4]/div/span[1]/span/input[1]"));
-            priceTagOverlap1.Click();
+           // IWebElement priceTagOverlap1 = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[4]/div/span[1]/span/input[1]"));
+           // priceTagOverlap1.Click();
 
-            IWebElement priceTextBox1 = driver.FindElement(By.Id("Price"));
-            priceTextBox1.Clear();
+            //IWebElement priceTextBox1 = driver.FindElement(By.Id("Price"));
+            //priceTextBox1.Clear();
 
-            IWebElement priceTagOverlap2 = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[4]/div/span[1]/span/input[1]"));
-            priceTagOverlap1.Click();
+            //IWebElement priceTagOverlap2 = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[4]/div/span[1]/span/input[1]"));
+            //priceTagOverlap1.Click();
 
-            IWebElement priceTextBox2 = driver.FindElement(By.Id("Price"));
-            priceTextBox2.SendKeys("40");
+            IWebElement codeTextBox = driver.FindElement(By.Id("Code"));
+            codeTextBox.Clear();
+            codeTextBox.SendKeys(code);
 
             //Click on save button
             IWebElement saveButtonAfterEdit = driver.FindElement(By.Id("SaveButton"));
             saveButtonAfterEdit.Click();
             Wait.WaitToBeClickable(driver, "XPath", "//span[text()='Go to the last page']", 3);
 
+            IWebElement goToLastPageButton1 = driver.FindElement(By.XPath("//span[text()='Go to the last page']"));
+            goToLastPageButton1.Click();
 
+
+
+
+        }
+
+        public string GetEditedPrice(IWebDriver driver)
+        {
+
+            IWebElement editedCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            return editedCode.Text;       
         }
         public void DeleteTimeRecord(IWebDriver driver)
         {
