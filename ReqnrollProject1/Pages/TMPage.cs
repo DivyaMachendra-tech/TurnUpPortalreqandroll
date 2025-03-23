@@ -70,7 +70,7 @@ namespace ReqnrollProject1.Pages
             IWebElement newPrice = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[4]"));
             return newPrice.Text;
         }
-        public void EditTimeRecord(IWebDriver driver,String code)
+        public void EditTimeRecord(IWebDriver driver,String code,String description)
         {
             //Go to last page
             IWebElement goToLastPageButton = driver.FindElement(By.XPath("//span[text()='Go to the last page']"));
@@ -94,6 +94,11 @@ namespace ReqnrollProject1.Pages
             IWebElement codeTextBox = driver.FindElement(By.Id("Code"));
             codeTextBox.Clear();
             codeTextBox.SendKeys(code);
+            Thread.Sleep(2000);
+
+            IWebElement descriptionTextBox = driver.FindElement(By.Id("Description"));
+            descriptionTextBox.Clear();
+            descriptionTextBox.SendKeys(description);
 
             //Click on save button
             IWebElement saveButtonAfterEdit = driver.FindElement(By.Id("SaveButton"));
@@ -108,11 +113,17 @@ namespace ReqnrollProject1.Pages
 
         }
 
-        public string GetEditedPrice(IWebDriver driver)
+        public string GetEditedCode(IWebDriver driver)
         {
 
             IWebElement editedCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
             return editedCode.Text;       
+        }
+
+        public String GetEditedDescription(IWebDriver driver)
+        {
+            IWebElement editedDescription = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
+            return editedDescription.Text;
         }
         public void DeleteTimeRecord(IWebDriver driver)
         {

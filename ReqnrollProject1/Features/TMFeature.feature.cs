@@ -97,7 +97,7 @@ namespace ReqnrollProject1.Features
                     "timeandmaterial"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Create new time and material record with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 8
+#line 13
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -107,16 +107,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 9
- await testRunner.GivenAsync("I logged into Turnup portal successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 14
+    await testRunner.GivenAsync("I logged into Turnup portal successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 10
+#line 15
  await testRunner.AndAsync("I navigate to the Time and Material Page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 11
- await testRunner.WhenAsync("I create a new Time and Material record", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 16
+    await testRunner.WhenAsync("I create a new Time and Material record", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 12
+#line 17
  await testRunner.ThenAsync("the record should be created successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -125,16 +125,17 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Edit existing time record with valid data")]
-        [NUnit.Framework.TestCaseAttribute("Industry Connect", null)]
-        [NUnit.Framework.TestCaseAttribute("TA Job Ready", null)]
-        [NUnit.Framework.TestCaseAttribute("Divya", null)]
-        public async System.Threading.Tasks.Task EditExistingTimeRecordWithValidData(string code, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Industry Connect", "Laptop", null)]
+        [NUnit.Framework.TestCaseAttribute("TA Job Ready", "Keyboard", null)]
+        [NUnit.Framework.TestCaseAttribute("Divya", "Mouse", null)]
+        public async System.Threading.Tasks.Task EditExistingTimeRecordWithValidData(string code, string description, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("code", code);
+            argumentsOfScenario.Add("description", description);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Edit existing time record with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 14
+#line 19
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -144,17 +145,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 15
+#line 20
     await testRunner.GivenAsync("I logged into Turnup portal successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 16
+#line 21
  await testRunner.AndAsync("I navigate to the Time and Material Page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 17
- await testRunner.WhenAsync(string.Format("I update the \'{0}\' on the existing time record.", code), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 22
+    await testRunner.WhenAsync(string.Format("I update the \'{0}\' and \'{1}\' on the existing time record.", code, description), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 18
- await testRunner.ThenAsync(string.Format("the record should be updated \'{0}\'", code), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 23
+ await testRunner.ThenAsync(string.Format("the record have the updated \'{0}\' and \'{1}\'", code, description), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
